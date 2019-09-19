@@ -1,4 +1,5 @@
 
+import java.text.*;
 import java.util.Scanner;
 
 
@@ -12,17 +13,25 @@ public class SalaryTable {
         // old salary
         // raise 
         // new salary
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        DecimalFormat twoPlaces = new DecimalFormat("0.00");
         Scanner s = new Scanner(System.in);
         double osal=0, raise=40000, nsal=40000;
         //final double start = 40000;
         System.out.format("%s%20s%10s%20s\n","YEAR","OLD SALARY","RAISE","NEW SALARY");
         System.out.format("%s%20s%10s%20s\n","====","==========","=====","==========");
         for (int i = 1; i <= 10; i++) {
-            System.out.format("%d\t      $%.2f\t     $%4.2f\t    $%4.2f",i,osal,raise,nsal);
+            System.out.format("%d\t      $%s\t     $%s\t    $%s",i,twoPlaces.format(osal),twoPlaces.format(raise),twoPlaces.format(nsal));
+            //System.out.format(" pay is %s",nf.format(osal));
             osal = nsal;//40000
             raise = osal * 0.03; //40000
             nsal = osal + raise;
             System.out.format("\n");
+            /*
+            DecimalFormat twoPlaces = new DecimalFormat("0.00");
+            System.out.println(twoPlaces.format(amount));
+            */
+            
             
             
         }
